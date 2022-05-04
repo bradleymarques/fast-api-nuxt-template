@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand, CommandError
-from authorization.factories import AdminFactory
+from authorization.factories import AdminFactory, UserFactory
 
 
 class Command(BaseCommand):
@@ -10,5 +10,6 @@ class Command(BaseCommand):
 
         print("👤 Seeding Users")
         admin = AdminFactory(username="admin")
+        user = UserFactory()
 
         print("✅ Done")

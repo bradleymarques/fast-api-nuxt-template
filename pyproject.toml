@@ -8,6 +8,7 @@ authors = ["Bradley Marques <bradleyrcmarques@gmail.com>"]
 python = "^3.9"
 Django = "^4.0.4"
 django-bootstrap5 = "^21.3"
+django-environ = "^0.8.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.1.2"

@@ -1,20 +1,22 @@
-# Dockerfile
-FROM node:11.13.0-alpine
+FROM node:lts as builder
 
-# create destination directory
-RUN mkdir -p /app
 WORKDIR /app
 
-# update and install dependency
-RUN apk update && apk upgrade
-RUN apk add git
+COPY . .
 
-# copy the app, note .dockerignore
-COPY . /app/
-RUN npm install
-RUN npm run build
+RUN yarn install \
+    --prefer-offline \
+    --frozen-lockfile \
+    --non-interactive \
+    --production=false
 
-EXPOSE 3000
+RUN yarn build
 
-ENV NUXT_HOST=0.0.0.0
-ENV NUXT_PORT=3000
+FROM node:lts
+
+WORKDIR /app
+
+COPY --from=builder /app  .
+
+ENV HOST 0.0.0.0
+EXPOSE 8000

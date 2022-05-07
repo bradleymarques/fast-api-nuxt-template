@@ -21,15 +21,15 @@ jobs:
 
     steps:
       - name: Checkout 🛎
-        uses: actions/checkout@master
         working-directory: ./frontend
+        uses: actions/checkout@master
 
       - name: Setup node env 🏗
+        working-directory: ./frontend
         uses: actions/setup-node@v2.1.5
         with:
           node-version: ${{ matrix.node }}
           check-latest: true
-          working-directory: ./frontend
 
       - name: Get yarn cache directory path 🛠
         working-directory: ./frontend
@@ -37,10 +37,10 @@ jobs:
         run: echo "::set-output name=dir::$(yarn cache dir)"
 
       - name: Cache node_modules 📦
+        working-directory: ./frontend
         uses: actions/cache@v2.1.4
         id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
         with:
-          working-directory: ./frontend
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |

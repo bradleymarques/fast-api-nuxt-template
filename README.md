@@ -18,7 +18,7 @@ This will spin up the following:
 + [localhost:8000](localhost:8000) - Fast API Backend
 + [localhost:8000/docs](localhost:8000/docs) - API Documentation
 + [localhost:3000](localhost:3000) - NuxtJs Frontend
-+ [localhost:5432](localhost:5432) - PostgreSQL Database
++ [localhost:5435](localhost:5435) - PostgreSQL Database
 
 ## What else is included?
 

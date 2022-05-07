@@ -1,0 +1,1 @@
+# FastAPI NuxtJS Template
